@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Garden</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #d4edda;
+        }
+        h1 {
+            color: #2d6a4f;
+        }
+        .garden {
+            width: 80vw;
+            height: 60vh;
+            background-color: #95d5b2;
+            border: 5px solid #2d6a4f;
+            position: relative;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        .flower {
+            position: absolute;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Click to Plant Flowers!</h1>
+    <div class="garden" id="garden"></div>
+    <script>
+        document.getElementById("garden").addEventListener("click", function(event) {
+            let flowerTypes = ["🌸", "🌻", "🌼", "🌷", "🌹"];
+            let flower = document.createElement("div");
+            flower.classList.add("flower");
+            flower.innerHTML = flowerTypes[Math.floor(Math.random() * flowerTypes.length)];
+            flower.style.left = event.clientX - this.offsetLeft + "px";
+            flower.style.top = event.clientY - this.offsetTop + "px";
+            this.appendChild(flower);
+        });
+    </script>
+</body>
+</html>
